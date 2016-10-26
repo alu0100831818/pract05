@@ -1,14 +1,17 @@
-
-require './lib/receta.rb'
+#Mayra Garcia, LPP
+#Test, clase: Receta
+require 'lib/receta.rb'
 require "test/unit"
 
- #.instance_of? vb 
-class TestCabecera < Test::Unit::TestCase
+#Clase que testea a nuestra clase Receta
+class Testreceta < Test::Unit::TestCase
     
+    #Variable objeto para pruebas
     def setup
         @Objeto= Receta.new()
     end
  
+    #
     def test_cabecera
         var="Receta de: patatas al horno\n ===============\n \n"
         assert_equal(var, @Objeto.mostrar_cabecera('patatas al horno'))
@@ -34,21 +37,12 @@ class TestCabecera < Test::Unit::TestCase
         assert_equal(var2, @Objeto.ingredientes(var))
     end
     
-    def instrucciones
-        var=    'Ponga hervir el agua.,Añada la pasta.
-                ,deje hervir durante 6 minutos. ,Escurra el agua.
-                ,Mezcle la salsa de tomate y la pimienta con la pasta.
-                ,Sirva caliente.'
+    def test_instrucciones
+        var='Ponga hervir el agua,Añada la pasta,deje hervir durante 6 minutos,Escurra el agua,Mezcle la salsa de tomate y la pimienta con la pasta,Sirva caliente'
               
         assert((var.instance_of? String), "No es una cadena")
         
-        var2="\nInstrucciones:\n
-        1)Ponga hervir el agua.\n
-        2)Añada la pasta.\n
-        3)deje hervir durante 6 minutos.\n
-        4)Escurra el agua.\n
-        5)Mezcle la salsa de tomate y la pimienta con la pasta.\n
-        6)Sirva caliente."
+        var2="\nInstrucciones:\n1) Ponga hervir el agua\n2) Añada la pasta\n3) deje hervir durante 6 minutos\n4) Escurra el agua\n5) Mezcle la salsa de tomate y la pimienta con la pasta\n6) Sirva caliente\n"
         
         assert_equal(var2, @Objeto.instrucciones(var))
         
