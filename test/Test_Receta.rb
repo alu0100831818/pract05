@@ -10,12 +10,18 @@ class Testreceta < Test::Unit::TestCase
     def setup
         @Objeto= Receta.new()
     end
- 
-    #
+    
+    
+    #..........................................................................
+    
     def test_cabecera
         var="Receta de: patatas al horno\n ===============\n \n"
+        assert((var.instance_of? String), "No es una cadena")
         assert_equal(var, @Objeto.mostrar_cabecera('patatas al horno'))
     end
+    
+    
+    #..........................................................................
     
     def test_Porciones_tiempo
         por=3 #porciones enteras aunque tambien se puede medias pero usa float
@@ -29,6 +35,10 @@ class Testreceta < Test::Unit::TestCase
         assert_equal(var, @Objeto.mostrar_porciones_t_espera(por,time))
     end
     
+    
+    #..........................................................................
+    
+    
     def test_Ingredientes
         var="patatas,queso,tomates,cebolla,cilantro"
         assert((var.instance_of? String), "No es una cadena")
@@ -36,6 +46,10 @@ class Testreceta < Test::Unit::TestCase
         var2="\nIngredientes:\npatatas\nqueso\ntomates\ncebolla\ncilantro"
         assert_equal(var2, @Objeto.ingredientes(var))
     end
+    
+    
+    #..........................................................................
+    
     
     def test_instrucciones
         var='Ponga hervir el agua,Añada la pasta,deje hervir durante 6 minutos,Escurra el agua,Mezcle la salsa de tomate y la pimienta con la pasta,Sirva caliente'
